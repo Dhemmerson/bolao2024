@@ -143,7 +143,11 @@
     </div>
 
     <script>
-        const targetDate = new Date("2024-12-05T15:40:00").getTime();
+        // Ajuste da data alvo considerando o fuso horário local do usuário
+        const targetDate = new Date();
+        targetDate.setFullYear(2024, 11, 5); // Ano, mês (Dezembro), dia (5)
+        targetDate.setHours(15, 40, 0, 0); // Horário local
+
         const emojiElement = document.getElementById('emoji');
         const redirectUrl = "https://dhemmerson.github.io/ponto-a-ponto-bolao-sbdd/"; // Substitua pela URL desejada
 
