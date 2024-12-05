@@ -147,7 +147,7 @@
         const targetDate = new Date();
         targetDate.setFullYear(2024, 11, 5); // Ano, mês (Dezembro), dia (5)
         targetDate.setHours(16, 00, 0, 0); // Hora local de destino (15:40)
-        
+
         // URL de redirecionamento
         const redirectUrl = "https://dhemmerson.github.io/ponto-a-ponto-bolao-sbdd/";
 
@@ -156,7 +156,7 @@
             const now = new Date().getTime();
             const timeRemaining = targetDate - now;
 
-            if (timeRemaining >= 0) {
+            if (timeRemaining > 0) {
                 const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
                 const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
@@ -167,12 +167,15 @@
                 document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
                 document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
             } else {
+                // Quando a contagem regressiva termina
                 clearInterval(interval);
                 setFinalTimeToZero();
                 triggerCelebration();
+
+                // Redireciona após 45 segundos da animação do confete
                 setTimeout(() => {
-                    window.location.href = redirectUrl; // Redireciona após o confete
-                }, 45000); // 45 segundos após a animação de confetes
+                    window.location.href = redirectUrl;
+                }, 45000); // 45 segundos após animação
             }
 
             // Animação do emoji
