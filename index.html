@@ -146,10 +146,13 @@
         // Ajuste da data alvo considerando o fuso horário local do usuário
         const targetDate = new Date();
         targetDate.setFullYear(2024, 11, 5); // Ano, mês (Dezembro), dia (5)
-        targetDate.setHours(15, 40, 0, 0); // Horário local
+        targetDate.setHours(15, 46, 0, 0); // Horário local
 
         const emojiElement = document.getElementById('emoji');
         const redirectUrl = "https://dhemmerson.github.io/ponto-a-ponto-bolao-sbdd/"; // Substitua pela URL desejada
+
+        let celebrationStarted = false;
+        let celebrationTimeout;
 
         function updateCountdown() {
             const now = new Date().getTime();
@@ -169,7 +172,9 @@
                 clearInterval(interval);
                 setFinalTimeToZero();
                 triggerCelebration();
-                window.location.href = redirectUrl; // Redireciona para o site após a contagem
+                celebrationTimeout = setTimeout(() => {
+                    window.location.href = redirectUrl; // Redireciona após 45 segundos
+                }, 45000); // 45 segundos
             }
 
             // Animação do emoji
@@ -210,3 +215,4 @@
     </script>
 </body>
 </html>
+
