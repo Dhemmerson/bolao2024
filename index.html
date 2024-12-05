@@ -143,14 +143,15 @@
     </div>
 
     <script>
-        // Ajusta a data alvo considerando o fuso horário local do usuário
+        // Define a data alvo com a hora exata que você deseja
         const targetDate = new Date();
         targetDate.setFullYear(2024, 11, 5); // Ano, mês (Dezembro), dia (5)
-        targetDate.setHours(15, 55, 0, 0); // Horário local
-
-        // Substitua pela URL desejada
+        targetDate.setHours(15, 40, 0, 0); // Hora local de destino (15:40)
+        
+        // URL de redirecionamento
         const redirectUrl = "https://dhemmerson.github.io/ponto-a-ponto-bolao-sbdd/";
 
+        // Função para atualizar a contagem regressiva
         function updateCountdown() {
             const now = new Date().getTime();
             const timeRemaining = targetDate - now;
@@ -169,21 +170,25 @@
                 clearInterval(interval);
                 setFinalTimeToZero();
                 triggerCelebration();
-                window.location.href = redirectUrl; // Redireciona para o site após a contagem
+                setTimeout(() => {
+                    window.location.href = redirectUrl; // Redireciona após o confete
+                }, 45000); // 45 segundos após a animação de confetes
             }
 
             // Animação do emoji
             emojiElement.style.transform = `scale(${1 + Math.sin(Date.now() / 500) * 0.1})`;
         }
 
+        // Função para exibir 0 quando a contagem chega a zero
         function setFinalTimeToZero() {
             document.getElementById('days').textContent = "00";
             document.getElementById('hours').textContent = "00";
             document.getElementById('minutes').textContent = "00";
             document.getElementById('seconds').textContent = "00";
-            emojiElement.textContent = "BOLÃO🎉"; // Emoji de comemoração ao final
+            emojiElement.textContent = "BOLÃO🎉"; // Emoji de comemoração
         }
 
+        // Função para iniciar a animação dos confetes
         function triggerCelebration() {
             for (let i = 0; i < 200; i++) {
                 const confetti = document.createElement('div');
@@ -196,15 +201,17 @@
 
                 setTimeout(() => {
                     confetti.remove();
-                }, 10000);
+                }, 10000); // Remove o confete após 10 segundos
             }
         }
 
+        // Função para gerar cores aleatórias para os confetes
         function getRandomColor() {
             const colors = ['#ff0d57', '#ff5722', '#ffc107', '#4caf50', '#2196f3', '#9c27b0'];
             return colors[Math.floor(Math.random() * colors.length)];
         }
 
+        // Inicia a animação e a contagem regressiva
         const emojiElement = document.getElementById('emoji');
         const interval = setInterval(updateCountdown, 1000);
         updateCountdown();
