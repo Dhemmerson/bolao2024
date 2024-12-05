@@ -5,18 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contagem Regressiva com Confetes e Emoji</title>
     <style>
-    body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        background: url('https://i.postimg.cc/59G01Crb/Post-para-Instagram-de-investimentos-com-notas-de-100-reais-simples-azul-1.png') no-repeat center center/cover;
-        color: white;
-        font-family: Arial, sans-serif;
-        text-align: center;
-        overflow: hidden;
-    }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: url('https://i.postimg.cc/59G01Crb/Post-para-Instagram-de-investimentos-com-notas-de-100-reais-simples-azul-1.png') no-repeat center center/cover;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            overflow: hidden;
+        }
 
         .container {
             display: flex;
@@ -28,6 +28,7 @@
             font-size: 3em;
             display: flex;
             gap: 30px;
+            flex-wrap: wrap;
         }
 
         .time-segment {
@@ -75,6 +76,45 @@
             100% {
                 transform: translateY(100vh) rotate(720deg);
                 opacity: 0;
+            }
+        }
+
+        /* Ajustes para telas menores */
+        @media (max-width: 768px) {
+            .countdown {
+                font-size: 2em;
+                gap: 20px;
+            }
+
+            .time-segment span {
+                font-size: 1.2em;
+            }
+
+            .label {
+                font-size: 1em;
+            }
+
+            .emoji {
+                font-size: 4em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .countdown {
+                font-size: 1.5em;
+                gap: 10px;
+            }
+
+            .time-segment span {
+                font-size: 1em;
+            }
+
+            .label {
+                font-size: 0.9em;
+            }
+
+            .emoji {
+                font-size: 3em;
             }
         }
     </style>
